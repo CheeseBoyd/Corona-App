@@ -1,0 +1,489 @@
+myVar = nil
+print(type(myVar)) -- nil var
+myVar2 = 12
+print(type(myVar2)) -- number var
+myVar3 = "string variable"
+myVar3_1 = [[
+some string block lel
+]]
+print(type(myVar3_1))
+myVar4 = true --boolean
+print(type(myVar4))
+myVar5 ={"string", 12, "another string"} --array is a table type
+print(type(myVar5)) -- arrays count at one [1]
+myVar6  = "count"
+print(#myVar6) --returns the number of myVar6
+
+--Math: as 5.3 numbers are stored as doubles or integers
+--[[
+ has precedence
+^
+not # -(unary) --unary means converting a number to negative
+* / %
++ -
+]]
+
+answer = (2 + 5) 
+* 4
+print(answer)
+
+--Math Library
+--[[
+common library functions
+
+acos
+asin
+ceil
+cos
+deg
+exp
+floor
+huge
+log
+log10
+max
+min
+pi
+rad
+random
+randomseed
+sin
+tan
+]]
+
+myPi = math.pi
+print(myPi)
+math.randomseed(os.time()) 
+-- [[seeds the rng in math.random() uisng the operating system time
+]]
+print(math.random())
+
+addtwo = function() 
+  result1 = 10
+  result2 = 22
+  return 200, "string"
+end
+
+temp1, temp2 = addtwo()
+
+print(temp1)
+print(temp2)
+
+
+-- [[ functions defined as vars can call itself and do 
+recursive
+functions can also have multiple returns 
+]]
+
+--scope
+
+
+--scope
+-- if no kyewords scope is global
+--[[
+ available everywhere and all available files
+]]
+
+--local vars and global vars
+
+_G.temp = "hi" --global var or you can use temp only
+local temp1 = "hello"
+
+local test = function()
+  local temp = "inside test"
+  print(temp)
+end
+
+test()
+
+
+--[[
+   string library
+byte
+char
+find
+format
+gmatch
+gsub
+len
+lower
+match
+patterns
+rep
+sub
+upper
+]]
+
+local str = "Hola mundo!" --length
+print(string.len(str))
+
+local str2 = string.rep("replicate me 2 times \n", 2) -- string replication
+print(str2)
+
+local str3 = "lowcase"
+print(string.upper(str3))
+
+local subStr = "stringSub"
+print(string.sub(subStr, 1, 3))
+
+print(string.char(99)) -- char call using ascii?? 
+print(string.byte("c", 1)) --reverse
+
+
+print(string.format("first 4 decimals of pi: %.4f", math.pi))
+
+--[[
+String format/patterns
+
+basically the same for printf() of C
+
+% followed by
+d -decimal
+x - hexadecimal
+o - octal
+f- floating point
+s -string
+p - punctuation
+l - lowercase
+u - uppercase
++ -1 or more repititions
+* -0 or more repititions
+- -0 or more repititions
+? -0 or 1 occurance
+
+]]
+
+
+print(string.format("first 4 decimals of pi: %.4f", math.pi))
+print(string.format("%02d", 1) ) --two digits of 1 means 01
+
+
+
+local findStr = "got damn"
+local sBegin, sEnd = string.find(findStr, "got")
+--[[
+   will look for the beginning of and end for "world "in the string
+]]
+
+print(sBegin)
+print(sEnd)
+
+local findStr = "world of tanks pattern"
+
+local found = string.match(findStr, "pattern")
+-- will store pattern in found if found
+print(found)
+
+local temp = "substitute x with hello"
+local temp2 = string.gsub(temp, "x", "hello")
+print(temp2)
+
+
+--[[
+if comparison then
+  -- run code
+end
+
+~= is != everything else is the same
+and is &&
+or is || 
+not is not
+unusual if else weird af.
+
+]]
+
+-- ifs
+if not(12 > 2) then
+ print("Ok")
+else
+ print("Fine")
+
+--[[
+ if condition then
+   --inner code to run
+  elseif condition then
+
+  else
+   --default to this
+  end
+]]
+
+end
+
+--you can also nest if but it gets dirty real quick
+
+--Iterations 
+
+--[[
+for counter do
+  --code
+end
+
+]]
+
+local stop = 10
+local step = 2
+
+for i = 0, stop, step do
+print(i)
+end
+
+
+local a = 20
+while a >= 10 do
+print(a)
+a = a-1
+end
+
+
+--if you need it to run at least once 
+
+local temp = true
+repeat
+ --code
+ print("at least run one time")
+until (temp == true)
+
+
+--[[
+ i/o lib
+io.input(filename)
+io.output(filename)
+io.open(filename, mode)
+io.close(filename)
+
+io.read(param)
+io.write()
+]]
+
+
+--[[
+Lua tables
+Tables are used to represent data structures in lua
+-arrays
+-records
+-lists
+-queues
+-sets
+-etc...
+
+tables can utilize str, functions, strings, numbers, etc
+
+]]
+
+local array = {}
+for i = 1, 10 do
+  array[i] = "x"
+end
+
+print(#array)
+
+local matrix = {}
+for i = 1, 10 do
+ matrix[i] = {}
+   for j = 1, 10 do
+     matrix[i][j] = "y"
+   end
+end
+
+
+--table library
+--[[
+# returns size
+table.insert -inset element in a pos
+table.remove -removes and element
+table.sort -sorts the table
+]]
+
+local xyz = {"a","c","b","f"}
+table.sort(xyz)
+for i = 1, #xyz do
+  print(xyz[i])
+end
+
+
+
+--Pairs and Ipairs
+--[[
+
+Generic for loops commonly used with tables
+iPairs for ordered tables
+Pairs for unordered or multidimensional tables
+
+key = index and value = value of key pairs
+
+]]
+
+--iparis are great for ordered tables
+local table = {"hola", "negra", 12, "suzy"}
+for key, value in ipairs(table) do
+  --print(key, value)
+end
+
+local obj = {"name", "age", "gender"}
+obj.name = "aaron"
+obj.age = 22
+obj.gender = "m"
+
+for key, value in pairs(obj) do
+  print(key, value)
+end
+
+
+--Closure 
+--[[
+ generally an anon function within another function
+]]
+
+local foo = function()
+ str = "name"
+ return function()
+  return str.." is a noun"
+ end
+end
+
+
+local f = foo() -- why do I need to do this????
+print(f()) -- will print the mem address if I don't
+
+
+--OS Library
+
+--[[
+os tools
+-time
+-date
+-clock
+-getenv
+-ext
+-execute
+-setlocale
+-difftime
+-remove
+-rename
+
+just read the docs
+
+]]
+
+print(os.date("*t"))
+for key, val in pairs(os.date("*t")) do
+ print(key, val)
+end
+
+--[[
+Lua modules
+is just a table 
+a package - a collection of modules
+
+]]
+
+--[[
+--creating a module
+module = {}
+
+function sample.add()
+ --code
+end
+
+return module
+
+--How you call a module
+local myModule = require("module")
+
+myModule.propertey/function()
+
+-as close as I can get to oop in lua
+]]
+
+--passing parameters
+
+local t = {1, 2, 3, 4, 5, 6, 0, 11}
+
+local foo = function(table)
+  for key, val in ipairs(table) do
+    print(key, val)
+  end
+end
+
+foo(t)
+
+--[[
+ passing unknown number of parameters
+ local foo = function(..)
+  
+ end
+]]
+
+
+--[[
+ --objects 
+ not a true oop tho. Close enough
+ you can make due with tables
+ 
+ to pass the object to a function, use a colon :
+
+]]
+
+local me = {}
+
+me.name = "aaron"
+me.age = 22
+me.gender = "male"
+me.employement_status = false
+me.foo = function()
+print("EXSIStANCE IS PAIN")
+end
+
+me.foo()
+
+-- Note: object.foo() != object:foo() where object:foo() is
+equal to object.foo(self) where self is an extra parameter 
+referencing the object. "this"
+
+
+--[[
+Metamethods
+can override other methods
+are registered to their parent table with setmetatable
+]]
+
+--build metamethod
+local metaMethod_add = function(x,y)
+ return {value = x.key + y.key} --returns a table
+end
+
+
+local t = {key = 100}
+local t2 = {key = 200}
+
+
+local metatable = {__add = metaMethod_add } --overrides the add function
+
+setmetatable(t, metatable)
+
+local nt = t + t2
+
+print(nt.value)
+
+(looking further) Ok so the metafunction shown is a shortcut syntax to this:
+
+local MyMetaMethod_add = function(x, y)
+  -- returns a table that is the sum of the two given tables
+  -- x and y are tables with a 'value' member
+  -- intended to replace the __add() function invoked by the '+' operator of a table 
+  local ansTable = {}
+  ansTable.value = x.value + y.value
+  return ansTable
+end
+
+--tells lua how to handle operations for specific tables. i.e the plus function is replaced with myMetaMethod_add function only when being used on the set metatable
+
+--[[
+ --metamethod can alter a table's behaviour
+by altering the method signature to an operator
+for example the ( + ) operatore is the __add(a,b) signature. 
+By assigning a metamethod to __add(a,b) and setting it to a table
+any ( + ) operation performed on said table will utilise the custom __add(a,b) 
+function set
+]]
