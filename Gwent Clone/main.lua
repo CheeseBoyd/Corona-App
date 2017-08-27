@@ -7,5 +7,5 @@
 -- Your code here
 
 local composer = require( "composer" )
--- go to menu screen
+-- go to menu.lua 
 composer.gotoScene( "scene.menu", { params={ } } )
